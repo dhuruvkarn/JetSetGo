@@ -1,0 +1,30 @@
+.timeMainContainer{
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: 5vh;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+
+.timeMainContainerDiv{
+    width: 100%;
+    font-size: 13px;
+    padding-left: 5px;
+    margin-bottom: 1rem;
+    height: 100%;
+    margin-top: 8%;
+}
+.calendraMainContainer{
+    position: relative;
+}
+
+@media only screen and (max-width: 780px) and (min-width: 1px){
+    .timeMainContainer{
+    width: 30%;
+    }
+    .timeMainContainerDiv{
+        margin-top: 5%;
+    }
+  }
+

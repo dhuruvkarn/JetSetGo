@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import "./Radio.css";
 
-const Radio = () => {
-    const [selectedOption, setSelectedOption] = useState("source");
+const Radio = ({onSelected}) => {
+    const [selectedOption, setSelectedOption] = useState("oneWay");
     const tripWay = [
         {
             key: "One-way",
-            value:"source"
+            value:"oneWay"
         },
         {
             key: "Round Trip",
-            value:"destination"
+            value:"roundWay"
         }
     ];
 
     const handleOptionChange = ({value}) => {
         setSelectedOption(value);
+        onSelected(value, "way")
     };
     
   return (
@@ -26,8 +27,7 @@ const Radio = () => {
                 type="radio"
                 checked={selectedOption === option.value}
                 onChange={() => handleOptionChange(option)}
-            />
-                           
+            />              
             {option.key}
         </div>
       ))}

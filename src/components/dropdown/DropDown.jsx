@@ -5,6 +5,8 @@ const DropDown = ({ flightData, travelSrc,flightInfo,onSelected }) => {
   const [text, setText] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   const [mapingData, setMapingData] = useState([]);
+  const source = "https://d3tfanr7troppj.cloudfront.net/static_files/images/000/004/711/original/Departure.svg?1697539770";
+  const destination = "https://d3tfanr7troppj.cloudfront.net/static_files/images/000/004/710/original/Destination.svg?1697539753"
 
   const handlechange = (e) => {
     setText(e.target.value);
@@ -36,16 +38,16 @@ const DropDown = ({ flightData, travelSrc,flightInfo,onSelected }) => {
          onMouseEnter={() => setShowDropDown(true)}
          onMouseLeave={() => setShowDropDown(false)}
         >
-            <i>
-              <img src="https://d3tfanr7troppj.cloudfront.net/static_files/images/000/004/711/original/Departure.svg?1697539770" />
+            <i style={{marginLeft:"10px"}}>
+              <img src={travelSrc === "source" ? source : destination} />
             </i>
           
             <input className='dropDownInputContainer'
               type='text'
-            value={flightInfo[travelSrc] || ""}
+            value={flightInfo[travelSrc] || text}
               placeholder={travelSrc === "source" ? "From" : "To"}
-            onChange={(e) => handlechange(e)}
-            autoComplete='off'
+             onChange={(e) => handlechange(e)}
+              autoComplete='off'
           />
         </div>
           {showDropDown && 

@@ -3,9 +3,12 @@ import './App.css';
 import axios from "axios";
 import DropDown from './components/dropdown/DropDown';
 import Radio from './components/radio/Radio';
+import Time from './components/time/Time';
 
 function App() {
-  const [flightInfo , setFlightInfo] = useState({})
+  const [flightInfo, setFlightInfo] = useState({
+    way:"oneWay"
+  });
   const [flightData, setFlightData] = useState([]);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ function App() {
     })
   }, []);
 
-  const handleFlightInfo = (key , value) => {
+  const handleFlightInfo = (key, value) => {
     setFlightInfo({...flightInfo , [value]:key})
   }
 
@@ -27,7 +30,7 @@ function App() {
         <>
           {flightData.length === 0 ? "Loading..." :
             <>
-            <Radio />
+            <Radio onSelected={handleFlightInfo} />
             <div className='airportNameContainer'>
               <DropDown
                 flightData={flightData}
@@ -41,6 +44,8 @@ function App() {
                 travelSrc="destination"
                 onSelected={handleFlightInfo}
               />
+              <Time departStr="Depart-On" onSelected={handleFlightInfo}/>  
+              {flightInfo.way !== "oneWay" && <Time departStr="Return-On" onSelected={handleFlightInfo}/>}
             </div>
 
             </>  

@@ -1,5 +1,5 @@
 .dropDownMainContainer{
-width: 30%;
+width: 25%;
 height: 5vh;
 /* display: flex; */
 }
@@ -10,17 +10,24 @@ height: 5vh;
     width:100%;
     align-items: center;
     text-align: center;
-    border: 1px solid red;
+    border: 1px solid #888;
+    border-radius:5px;
 }
 .dropDownInputContainer{
     width: 100%;
     outline: none;
     border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .optionMainContainer{
-    border: 1px solid red;
+    border: 1px solid #888;
     width: 100%;
     border-radius:5px;
+    border-top: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 .optionContainer{
@@ -33,3 +40,14 @@ border-radius:5px;
     background-color: rgb(235, 239, 247);
     color: black;
 }
+
+
+
+@media only screen and (max-width: 780px) and (min-width: 1px){
+    .dropDownMainContainer{
+    width: 100%;
+    }
+    .optionMainContainer{
+        position: relative;
+    }
+  }
