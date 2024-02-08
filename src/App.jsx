@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Radio from './components/radio/Radio';
 
 function App() {
   return (
-    <div className="App">
-     Project initails
+    <div className='mainContainer'>
+      <Radio/>
     </div>
   );
 }
