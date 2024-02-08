@@ -28,8 +28,8 @@ function App() {
   console.log(flightInfo,"flightInfoline")
 
   return (
-    <div className='mainContainer'>
-        <>
+    <div className='backGroundMainContainer'>
+        <div className='mainContainer'>
           {flightData.length === 0 ? "Loading..." :
             <>
             <Radio onSelected={handleFlightInfo} />
@@ -49,12 +49,14 @@ function App() {
               <Time departStr="Depart-On" onSelected={handleFlightInfo}/>  
               {flightInfo.way !== "oneWay" && <Time departStr="Return-On" onSelected={handleFlightInfo} />}
               <Travaller onSelected={handleFlightInfo} />
-              <button>Submit</button>
+              <div className='searchContainer'>
+                Search
+              </div>
             </form>
 
             </>  
           }
-          </>
+          </div>
     </div>
   );
 }

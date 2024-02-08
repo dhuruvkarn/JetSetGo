@@ -28,6 +28,7 @@ height: 5vh;
     border-top: none;
     background-color: white;
     cursor: pointer;
+    margin-top: 1px;
 }
 
 .optionContainer{

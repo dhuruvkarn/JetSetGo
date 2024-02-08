@@ -21,6 +21,7 @@ const Travaller = ({onSelected}) => {
               minLength={1}
               maxLength={1}
               value={num}
+              placeholder='No. of People'
               onChange={(e) => handleTraveller(e)}
           />
     </div>
