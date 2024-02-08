@@ -1,0 +1,14 @@
+.travallerMainContainer{
+    width: 8%;
+    height: 5vh;
+    border: 1px solid #888;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.travallerMainContainer > input{
+    border: none;
+    width: 100%;
+    outline: none;
+}

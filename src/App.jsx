@@ -4,6 +4,7 @@ import axios from "axios";
 import DropDown from './components/dropdown/DropDown';
 import Radio from './components/radio/Radio';
 import Time from './components/time/Time';
+import Travaller from './components/traveller/Travaller';
 
 function App() {
   const [flightInfo, setFlightInfo] = useState({
@@ -24,6 +25,7 @@ function App() {
   const handleFlightInfo = (key, value) => {
     setFlightInfo({...flightInfo , [value]:key})
   }
+  console.log(flightInfo,"flightInfoline")
 
   return (
     <div className='mainContainer'>
@@ -31,7 +33,7 @@ function App() {
           {flightData.length === 0 ? "Loading..." :
             <>
             <Radio onSelected={handleFlightInfo} />
-            <div className='airportNameContainer'>
+            <form className='airportNameContainer'>
               <DropDown
                 flightData={flightData}
                 flightInfo={flightInfo}
@@ -45,8 +47,10 @@ function App() {
                 onSelected={handleFlightInfo}
               />
               <Time departStr="Depart-On" onSelected={handleFlightInfo}/>  
-              {flightInfo.way !== "oneWay" && <Time departStr="Return-On" onSelected={handleFlightInfo}/>}
-            </div>
+              {flightInfo.way !== "oneWay" && <Time departStr="Return-On" onSelected={handleFlightInfo} />}
+              <Travaller onSelected={handleFlightInfo} />
+              <button>Submit</button>
+            </form>
 
             </>  
           }

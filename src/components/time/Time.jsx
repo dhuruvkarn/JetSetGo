@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Time.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -8,8 +8,6 @@ const Time = ({departStr,onSelected}) => {
     const [showCalendra, setshowCalendra] = useState(false);
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const monthsOfYear = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const roundTripDate = new Date();
-    roundTripDate.setDate(roundTripDate.getDate() + 2);
     const [dateValue , setDateValue] = useState("")
 
 
