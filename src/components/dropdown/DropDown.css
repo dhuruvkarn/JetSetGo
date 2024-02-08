@@ -1,0 +1,35 @@
+.dropDownMainContainer{
+width: 30%;
+height: 5vh;
+/* display: flex; */
+}
+.inputImgContainer{
+    display: flex;
+    gap: 0.5rem;
+    height: 100%;
+    width:100%;
+    align-items: center;
+    text-align: center;
+    border: 1px solid red;
+}
+.dropDownInputContainer{
+    width: 100%;
+    outline: none;
+    border: none;
+}
+.optionMainContainer{
+    border: 1px solid red;
+    width: 100%;
+    border-radius:5px;
+}
+
+.optionContainer{
+padding: 0.5rem;
+color: #666;
+border-radius:5px;
+}
+
+.optionContainer:hover{
+    background-color: rgb(235, 239, 247);
+    color: black;
+}

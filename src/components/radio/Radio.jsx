@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import "./Radio.css";
 
 const Radio = () => {
-    const [selectedOption, setSelectedOption] = useState("one");
+    const [selectedOption, setSelectedOption] = useState("source");
     const tripWay = [
         {
             key: "One-way",
-            value:"one"
+            value:"source"
         },
         {
             key: "Round Trip",
-            value:"round"
+            value:"destination"
         }
     ];
 
