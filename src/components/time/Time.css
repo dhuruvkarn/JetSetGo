@@ -21,10 +21,10 @@
 
 @media only screen and (max-width: 780px) and (min-width: 1px){
     .timeMainContainer{
-    width: 30%;
+    width: 100%;
     }
     .timeMainContainerDiv{
-        margin-top: 5%;
+        margin-top: 3%;
     }
   }
 

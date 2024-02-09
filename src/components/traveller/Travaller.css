@@ -13,3 +13,13 @@
     outline: none;
     margin-left: -8%;
 }
+
+
+@media only screen and (max-width: 780px) and (min-width: 1px){
+    .travallerMainContainer{
+    width: 95%;
+    }
+    .travallerMainContainer > input{
+        margin-left: 0.1%;
+    }
+  }

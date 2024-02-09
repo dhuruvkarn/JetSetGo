@@ -67,9 +67,12 @@ const FlightDetails = () => {
 
     
   return (
-      <div>
-          {/* sort by price */}
-          <select onChange={handleSortChange}>
+      <div className='flightMainContainer'>
+
+      {/* render data */}
+      <div  className='sortMainContainer'>
+      {/* sort by price */}
+          <select onChange={handleSortChange} style={{marginBottom:"1rem"}}>
             <option value="--">Sort By price</option>
             <option value="low">Low to high</option>
             <option value="high">High to low</option>
@@ -77,7 +80,7 @@ const FlightDetails = () => {
 
           {/* filter by airlineName */}
           {filteredAirline.map((airlineName, index) => (
-        <label key={index}>
+         <label key={index} style={{marginBottom:"0.5rem"}}>
           <input
             type="checkbox"
             value={airlineName}
@@ -86,15 +89,15 @@ const FlightDetails = () => {
           />
           {airlineName}
         </label>
-      ))}
+           ))}
+      </div>
 
-          
+      
+      <div className='infomainContainer'>
 
-
-          {/* render data */}
-          {sortedFlights.map(({displayData,fare}) => {
+      {sortedFlights.map(({displayData,fare}) => {
               return (
-                <div className='flightMainContainer'>
+                <div className='flightsubMainContainer'>
                 {/* first */}
                    <div className='imgMainContainer'>
                    <div>
@@ -106,8 +109,9 @@ const FlightDetails = () => {
              <div className='flightTimeContainer'>
                           <div className='time'>{new Date(displayData.source.depTime).getHours()} : {new Date(displayData.source.depTime).getMinutes()} </div>
                  <div className='stop'>
-                    <div>{ displayData.totalDuration}</div>
-                     <div>---------------</div>
+                      <div>{displayData.totalDuration}</div>
+                      
+                     <div>-------------</div>
                     <div>{ displayData.stopInfo}</div>
                  </div>
                           <div className='time'>
@@ -127,6 +131,10 @@ const FlightDetails = () => {
          </div>
               )
           })}
+      </div>
+         
+      
+          
          
     </div>
   )
