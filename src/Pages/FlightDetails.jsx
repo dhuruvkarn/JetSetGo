@@ -3,6 +3,14 @@ import React, { useEffect, useState } from 'react';
 
 const FlightDetails = () => {
     const [flightData, setFlightData] = useState([]);
+    // price render
+    const [sortOption, setSortOption] = useState('--');
+    const [sortedFlights, setSortedFlights] = useState(flightData);
+
+    //  filter by airline name
+    
+
+//   
     useEffect(() => {
         axios.get("https://api.npoint.io/4829d4ab0e96bfab50e7")
             .then(({ data }) => {
@@ -17,15 +25,42 @@ const FlightDetails = () => {
     }, []);
     
     console.log(flightData, "flightDataline")
-    
- 
-    
-   
+    // price filter
+    useEffect(() => {
+      sortFlights();
+    }, [sortOption, flightData]);
+  
+    const sortFlights = () => {
+      let sorted = [...flightData];
+  
+      if (sortOption === 'low') {
+        sorted.sort((a, b) => a.fare - b.fare);
+      } else if (sortOption === 'high') {
+        sorted.sort((a, b) => b.fare - a.fare);
+      }
+
+      setSortedFlights(sorted);
+    };
+  
+    const handleSortChange = (e) => {
+      setSortOption(e.target.value);
+    };
+
+
     
   return (
       <div>
-          {/*  */}
-          {flightData.map(({displayData,fare}) => {
+          {/* sort by price */}
+          <select onChange={handleSortChange}>
+            <option value="--">Sort By price</option>
+            <option value="low">Low to high</option>
+            <option value="high">High to low</option>
+          </select>
+
+          {/* filter by airlineName */}
+
+          {/* render data */}
+          {sortedFlights.map(({displayData,fare}) => {
               return (
                 <div className='flightMainContainer'>
                 {/* first */}
