@@ -8,14 +8,33 @@ const FlightDetails = () => {
     const [sortedFlights, setSortedFlights] = useState(flightData);
 
     //  filter by airline name
+    const [filteredAirline , setFilteredAirLine] = useState([])
+    const [selectedAirlines, setSelectedAirlines] = useState([]);
+    const handleCheckboxChange = (event) => {
+        const { value, checked } = event.target;
+        if (checked) {
+          setSelectedAirlines([...selectedAirlines, value]);
+        } else {
+          setSelectedAirlines(selectedAirlines.filter((airline) => airline !== value));
+        }
+      };
     
+
+    useEffect(() => {
+        if (selectedAirlines.length === 0) {
+            setSortedFlights(flightData);
+        } else {
+            setSortedFlights(flightData.filter((item) => item.displayData.airlines.some(airline => selectedAirlines.includes(airline.airlineName))));
+        }
+      }, [flightData, selectedAirlines]);
+  
 
 //   
     useEffect(() => {
         axios.get("https://api.npoint.io/4829d4ab0e96bfab50e7")
             .then(({ data }) => {
-                // const uniqueFlightName = [...new Set(data.data.result.map(obj => obj.displayData?.airlines[0].airlineName))];
-                // setFilterByFlight(uniqueFlightName)
+                const uniqueFlightName = [...new Set(data.data.result.map(obj => obj.displayData?.airlines[0].airlineName))];
+                setFilteredAirLine(uniqueFlightName)
                 setFlightData(data.data.result)
                 
           })
@@ -24,7 +43,6 @@ const FlightDetails = () => {
         })
     }, []);
     
-    console.log(flightData, "flightDataline")
     // price filter
     useEffect(() => {
       sortFlights();
@@ -58,6 +76,20 @@ const FlightDetails = () => {
           </select>
 
           {/* filter by airlineName */}
+          {filteredAirline.map((airlineName, index) => (
+        <label key={index}>
+          <input
+            type="checkbox"
+            value={airlineName}
+            checked={selectedAirlines.includes(airlineName)}
+            onChange={handleCheckboxChange}
+          />
+          {airlineName}
+        </label>
+      ))}
+
+          
+
 
           {/* render data */}
           {sortedFlights.map(({displayData,fare}) => {
