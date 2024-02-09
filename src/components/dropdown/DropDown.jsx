@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./DropDown.css";
+import { DataContext } from '../../Context/DataContextProvider';
 
-const DropDown = ({ flightData, travelSrc,flightInfo,onSelected }) => {
+const DropDown = ({  travelSrc, flightInfo, onSelected }) => {
+  const { flightData } = useContext(DataContext);
   const [text, setText] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   const [mapingData, setMapingData] = useState([]);

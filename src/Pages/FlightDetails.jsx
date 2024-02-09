@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { DataContext } from '../Context/DataContextProvider';
 
 const FlightDetails = () => {
-    const [flightData, setFlightData] = useState([]);
+  const {flightData} = useContext(DataContext)
+    
     // price render
     const [sortOption, setSortOption] = useState('--');
     const [sortedFlights, setSortedFlights] = useState(flightData);
@@ -28,20 +30,12 @@ const FlightDetails = () => {
         }
       }, [flightData, selectedAirlines]);
   
-
-//   
-    useEffect(() => {
-        axios.get("https://api.npoint.io/4829d4ab0e96bfab50e7")
-            .then(({ data }) => {
-                const uniqueFlightName = [...new Set(data.data.result.map(obj => obj.displayData?.airlines[0].airlineName))];
-                setFilteredAirLine(uniqueFlightName)
-                setFlightData(data.data.result)
-                
-          })
-          .catch((err) => {
-          console.log(err.message)
-        })
-    }, []);
+  
+  // 
+  useEffect(() => {
+    const uniqueFlightName = [...new Set(flightData.map(obj => obj.displayData?.airlines[0].airlineName))];
+    setFilteredAirLine(uniqueFlightName)
+  }, []);
     
     // price filter
     useEffect(() => {
