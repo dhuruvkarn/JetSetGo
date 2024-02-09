@@ -1,9 +1,12 @@
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../Context/DataContextProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const FlightDetails = () => {
-  const {flightData} = useContext(DataContext)
+  const { flightData } = useContext(DataContext);
+
+
+const notify = () => toast('Thank You... Your Booking is Confirmed.');
     
     // price render
     const [sortOption, setSortOption] = useState('--');
@@ -21,7 +24,7 @@ const FlightDetails = () => {
         }
       };
     
-
+  
     useEffect(() => {
         if (selectedAirlines.length === 0) {
             setSortedFlights(flightData);
@@ -61,7 +64,8 @@ const FlightDetails = () => {
 
     
   return (
-      <div className='flightMainContainer'>
+    <div className='flightMainContainer'>
+       <Toaster />
 
       {/* render data */}
       <div  className='sortMainContainer'>
@@ -119,7 +123,7 @@ const FlightDetails = () => {
              </div>
 
              {/* four */}
-             <div className='flightBookMainContainer'>
+             <div  onClick={()=>notify()} className='flightBookMainContainer'>
                 <div>Book</div>
            </div>
          </div>
